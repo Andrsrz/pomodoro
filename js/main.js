@@ -8,6 +8,7 @@ function createGrid(){
 	divGrid.setAttribute("style", "grid-template-columns: repeat(" + COLUMNS + ", 1fr); \
 									grid-template-rows: repeat(" + ROWS + ", 1fr);");
 	populateGrid(DEFAULT_SESSION, DEFAULT_BREAK, divGrid);
+	setOnClickEvents();
 }
 
 function getGridContainer(){ return document.getElementById("grid"); }
@@ -162,5 +163,30 @@ function createDisplay(){
 
 	return display;
 }
+
+function setOnClickEvents(){
+	let plusSession = document.getElementById("h2SMinutesPlus");
+	plusSession.setAttribute("onclick", "plusSession()");
+	let minusSession = document.getElementById("h2SMinutesMinus");
+	minusSession.setAttribute("onclick", "minusSession()");
+}
+
+function plusSession(){
+	let sessionMinutesObj = getSessionMinutes();
+	let number = Number(sessionMinutesObj.innerHTML);
+	number++;
+	sessionMinutesObj.innerHTML = number;
+}
+
+function minusSession(){
+	let sessionMinutesObj = getSessionMinutes();
+	let number = Number(sessionMinutesObj.innerHTML);
+	if(number > DEFAULT_SESSION){
+		number--;
+		sessionMinutesObj.innerHTML = number;
+	}
+}
+
+function getSessionMinutes(){ return document.getElementById("h3SMinutes"); }
 
 createGrid();
