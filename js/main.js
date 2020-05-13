@@ -21,6 +21,10 @@ function populateGrid(sessionMinutes, breakMinutes, whatGrid){
 	for(let i = 0; i < config.length; i++){
 		whatGrid.appendChild(config[i]);
 	}
+	display = createDisplay();
+	for(let i = 0; i < display.length; i++){
+		whatGrid.appendChild(display[i]);
+	}
 }
 
 function createButtons(){
@@ -118,11 +122,10 @@ function createConfiguration(sessionMinutes, breakMinutes){
 	let columnStart = 0;
 	let columnEnd = 2;
 	for(let i = 0; i < config.length; i++){
+		columnStart = columnEnd;
 		if(i % 2 == 0){
-			columnStart = columnEnd;
 			columnEnd += 2;
 		}else{
-			columnStart = columnEnd;
 			columnEnd += 1;
 		}
 
@@ -134,6 +137,12 @@ function createConfiguration(sessionMinutes, breakMinutes){
 	}
 
 	return config;
+}
+
+function createDisplay(){
+	let display = [];
+	let divWorkBreak = document.createElement("div");
+	return display;
 }
 
 createGrid();
