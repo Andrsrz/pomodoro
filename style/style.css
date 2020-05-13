@@ -3,6 +3,7 @@
 body {
 	margin: 0px;
 	font-family: 'Noto Sans', sans-serif;
+	background-color: #d1573e;
 }
 
 .pomodoroContainer {
@@ -18,7 +19,7 @@ body {
 }
 
 .cell {
-	background-color: white;
+	background-color: #d1a03e;
 	display: flex;
 	justify-content: center;
 	align-items: center;
