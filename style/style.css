@@ -4,3 +4,65 @@ body {
 	margin: 0px;
 	font-family: 'Noto Sans', sans-serif;
 }
+
+.pomodoroContainer {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+}
+
+.grid {
+	display: grid;
+	width: 450px;
+	height: 500px;
+}
+
+.cell {
+	background-color: white;
+}
+
+h1 {
+	text-align: center;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+						  supported by Chrome, Opera and Firefox */
+}
+
+.footer {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	list-style: none;
+	margin-top: auto;
+}
+
+.footer a {
+	text-decoration: none;
+	display: block;
+	padding: 1em;
+	color: white;
+}
+
+@media all and (max-width: 800px) {
+	.footer {
+		justify-content: space-around;
+	}
+}
+
+@media all and (max-width: 600px) {
+	.footer {
+		flex-flow: column wrap;
+		padding: 0;
+	}
+	.footer a {
+		text-align: center;
+		padding: 10px;
+	}
+	.footer li:last-of-type a {
+		border-bottom: none;
+	}
+}
