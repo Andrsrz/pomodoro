@@ -29,12 +29,6 @@ function populateGrid(sessionMinutes, breakMinutes, whatGrid){
 
 function createButtons(){
 	let buttons = [];
-	let divPause = document.createElement("div");
-	let btnPause = document.createElement("button");
-	btnPause.setAttribute("id", "buttonPause");
-	btnPause.innerHTML = "PAUSE";
-	divPause.appendChild(btnPause);
-	buttons.push(divPause);
 	let divRun = document.createElement("div");
 	let btnRun = document.createElement("button");
 	btnRun.setAttribute("id", "buttonRun");
@@ -49,15 +43,15 @@ function createButtons(){
 	buttons.push(divStop);
 
 	let columnStart = 2;
-	let columnEnd = columnStart + 2;
+	let columnEnd = columnStart + 3;
 	for(let i = 0; i < buttons.length; i++){
 		buttons[i].setAttribute("class", "cell");
 		buttons[i].setAttribute("style", "grid-column-start:" + columnStart +" ;\
 										grid-column-end:" + columnEnd + ";\
 										grid-row-start: 1;\
 										grid-row-end: 2;");
-		columnStart += 2;
-		columnEnd = columnStart + 2;
+		columnStart += 3;
+		columnEnd = columnStart + 3;
 	}
 
 	return buttons;
