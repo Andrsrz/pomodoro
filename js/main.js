@@ -1,7 +1,9 @@
 const COLUMNS = 8;
 const ROWS = 3;
 const DEFAULT_SESSION = 25; /* Minutes */
+const MAX_SESSION = 60;
 const DEFAULT_BREAK = 5; /* Minutes */
+const MAX_BREAK = 15;
 
 function createGrid(){
 	let divGrid = getGridContainer();
@@ -169,13 +171,20 @@ function setOnClickEvents(){
 	plusSession.setAttribute("onclick", "plusSession()");
 	let minusSession = document.getElementById("h2SMinutesMinus");
 	minusSession.setAttribute("onclick", "minusSession()");
+	let plusBreak = document.getElementById("h2BMinutesPlus");
+	plusBreak.setAttribute("onclick", "plusBreak()");
+	let minusBreak = document.getElementById("h2BMinutesMinus");
+	minusBreak.setAttribute("onclick", "minusBreak()");
 }
 
 function plusSession(){
 	let sessionMinutesObj = getSessionMinutes();
 	let number = Number(sessionMinutesObj.innerHTML);
-	number++;
-	sessionMinutesObj.innerHTML = number;
+	if(number < MAX_SESSION){
+		number++;
+		sessionMinutesObj.innerHTML = number;
+	}
+
 }
 
 function minusSession(){
@@ -187,6 +196,26 @@ function minusSession(){
 	}
 }
 
+function plusBreak(){
+	let breakMinutesObj = getBreakMinutes();
+	let number = Number(breakMinutesObj.innerHTML);
+	if(number < MAX_BREAK){
+		number++;
+		breakMinutesObj.innerHTML = number;
+	}
+
+}
+
+function minusBreak(){
+	let breakMinutesObj = getBreakMinutes();
+	let number = Number(breakMinutesObj.innerHTML);
+	if(number > DEFAULT_BREAK){
+		number--;
+		breakMinutesObj.innerHTML = number;
+	}
+}
+
 function getSessionMinutes(){ return document.getElementById("h3SMinutes"); }
+function getBreakMinutes(){ return document.getElementById("h3BMinutes"); }
 
 createGrid();
