@@ -19,6 +19,15 @@ body {
 
 .cell {
 	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button {
+	height: 50px;
+	flex: 0 0 120px;
+	border-radius: 10px;
 }
 
 h1 {

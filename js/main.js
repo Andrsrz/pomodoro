@@ -20,23 +20,27 @@ function populateGrid(sessionMinutes, breakMinutes, whatGrid){
 }
 
 function createButtons(){
-	let buttons = []
+	let buttons = [];
+	let divPause = document.createElement("div");
 	let btnPause = document.createElement("button");
 	btnPause.setAttribute("id", "buttonPause");
 	btnPause.innerHTML = "PAUSE";
-	buttons.push(btnPause);
+	buttons.push(divPause);
+	let divRun = document.createElement("div");
 	let btnRun = document.createElement("button");
 	btnRun.setAttribute("id", "buttonRun");
 	btnRun.innerHTML = "START";
-	buttons.push(btnRun);
+	buttons.push(divRun);
+	let divStop = document.createElement("div");
 	let btnStop = document.createElement("button");
 	btnStop.setAttribute("id", "buttonStop");
 	btnStop.innerHTML = "STOP";
-	buttons.push(btnStop);
+	buttons.push(divStop);
 
 	let columnStart = 2;
 	let columnEnd = columnStart + 2;
 	for(let i = 0; i < buttons.length; i++){
+		buttons[i].setAttribute("class", "cell");
 		buttons[i].setAttribute("style", "grid-column-start:" + columnStart +" ;\
 										grid-column-end:" + columnEnd + ";\
 										grid-row-start: 1;\
@@ -45,7 +49,16 @@ function createButtons(){
 		columnEnd = columnStart + 2;
 	}
 
+	divPause.appendChild(btnPause);
+	divRun.appendChild(btnRun);
+	divStop.appendChild(btnStop);
+
 	return buttons;
+}
+
+function createSession(){
+	let session = [];
+	let h1Session = document.createElement("");
 }
 
 createGrid();
