@@ -142,6 +142,30 @@ function createConfiguration(sessionMinutes, breakMinutes){
 function createDisplay(){
 	let display = [];
 	let divWorkBreak = document.createElement("div");
+	let h2WorkBreak = document.createElement("h2");
+	h2WorkBreak.setAttribute("id", "h2WorkBreak");
+	h2WorkBreak.innerHTML = "WORK";
+	divWorkBreak.appendChild(h2WorkBreak);
+	display.push(divWorkBreak);
+	let divTime = document.createElement("div");
+	let h1Time = document.createElement("h1");
+	h1Time.setAttribute("id", "h1Time");
+	h1Time.innerHTML = "00:00";
+	divTime.appendChild(h1Time);
+	display.push(divTime);
+
+	let columnStart = 2;
+	let columnEnd = 4;
+	for(let i = 0; i < display.length; i++){
+		display[i].setAttribute("class", "cell");
+		display[i].setAttribute("style", "grid-column-start:" + columnStart +" ;\
+										grid-column-end:" + columnEnd + ";\
+										grid-row-start: 3;\
+										grid-row-end: 4;");
+		columnStart = columnEnd;
+		columnEnd *= 2;
+	}
+
 	return display;
 }
 
