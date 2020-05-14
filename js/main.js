@@ -234,6 +234,8 @@ function setButtonsOnClickEvents(){
 }
 
 function startSession(){
+	let h2WorkBreak = document.getElementById("h2WorkBreak");
+	h2WorkBreak.innerHTML = "WORK";
 	let h1Time = document.getElementById("h1Time");
 	let str = h1Time.innerHTML;
 	let minutes = str[0] + str[1];
@@ -245,7 +247,36 @@ function startSession(){
 			seconds--;
 
 			if(minutes == 0 && seconds == 0){
-				h1Time.innerText = minutes + ":" + seconds;
+				startBreak();
+			}
+
+			if(seconds < 0){
+				seconds = 59;
+				minutes--;
+			}else if (seconds < 10) {
+				seconds = "0" + seconds;
+			}
+
+			h1Time.innerText = minutes + ":" + seconds;
+		}
+	}, ONE_SECOND);
+}
+
+function startBreak(){
+	let h2WorkBreak = document.getElementById("h2WorkBreak");
+	h2WorkBreak.innerHTML = "BREAK";
+	let breakMinutesObj = getBreakMinutes();
+	let str = breakMinutesObj.innerHTML;
+	let minutes = str;
+	let seconds = "00";
+	go = true;
+
+	window.setInterval(function(){
+		if(go){
+			seconds--;
+
+			if(minutes == 0 && seconds == 0){
+				startSession();
 			}
 
 			if(seconds < 0){
