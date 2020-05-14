@@ -2,8 +2,10 @@ const COLUMNS = 8;
 const ROWS = 3;
 const DEFAULT_SESSION = 25; /* Minutes */
 const MAX_SESSION = 60;
+const SECONDS = "00";
 const DEFAULT_BREAK = 5; /* Minutes */
 const MAX_BREAK = 15;
+const ONE_SECOND = 1000;
 
 function createGrid(){
 	let divGrid = getGridContainer();
@@ -147,7 +149,7 @@ function createDisplay(){
 	let divTime = document.createElement("div");
 	let h1Time = document.createElement("h1");
 	h1Time.setAttribute("id", "h1Time");
-	h1Time.innerHTML = "00:00";
+	h1Time.innerHTML = DEFAULT_SESSION + ":" + SECONDS;
 	divTime.appendChild(h1Time);
 	display.push(divTime);
 
@@ -183,6 +185,8 @@ function plusSession(){
 	if(number < MAX_SESSION){
 		number++;
 		sessionMinutesObj.innerHTML = number;
+		let h1Time = document.getElementById("h1Time");
+		h1Time.innerHTML = number + ":" + SECONDS;
 	}
 
 }
@@ -193,6 +197,8 @@ function minusSession(){
 	if(number > DEFAULT_SESSION){
 		number--;
 		sessionMinutesObj.innerHTML = number;
+		let h1Time = document.getElementById("h1Time");
+		h1Time.innerHTML = number + ":" + SECONDS
 	}
 }
 
@@ -218,12 +224,23 @@ function minusBreak(){
 function getSessionMinutes(){ return document.getElementById("h3SMinutes"); }
 function getBreakMinutes(){ return document.getElementById("h3BMinutes"); }
 
+function setButtonsOnClickEvents(){
+	let buttonStart = document.getElementById("buttonRun");
+	let buttonStop = document.getElementById("buttonStop");
+	buttonStart.setAttribute("onclick", "startSession()");
+	buttonStop.setAttribute("onclick", "stopSession()");
+}
 
+function startSession(){
+	/* Every second the function is going to be called */
+}
+
+function stopSession(){
+	clearTimeout(time);
+	let h2WorkBreak = document.getElementById("h2WorkBreak");
+	h2WorkBreak.innerHTML = "WORK";
+	let h1time = document.getElementById("h1Time");
+	h1time.innerHTML = "00:00";
+}
 
 createGrid();
-
-/*
-<button onclick="myVar = setTimeout(myFunction, 3000)">Try it</button>
-
-<button onclick="clearTimeout(myVar)">Stop it</button>
-*/
