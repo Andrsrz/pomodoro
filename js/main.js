@@ -242,6 +242,10 @@ function startSession(){
 	let seconds = str[3] + str[4];
 	go = true;
 
+	if(go){
+		playOn();
+	}
+
 	window.setInterval(function(){
 		if(go){
 			seconds--;
@@ -271,6 +275,10 @@ function startBreak(){
 	let seconds = "00";
 	go = true;
 
+	if(go){
+		playOn();
+	}
+
 	window.setInterval(function(){
 		if(go){
 			seconds--;
@@ -293,11 +301,22 @@ function startBreak(){
 
 function stopSession(){
 	go = false;
+	playOff();
 	let sessionMinutesObj = getSessionMinutes();
 	let h2WorkBreak = document.getElementById("h2WorkBreak");
 	h2WorkBreak.innerHTML = "WORK";
 	let h1time = document.getElementById("h1Time");
 	h1time.innerHTML = sessionMinutesObj.innerHTML + ":" + SECONDS;
+}
+
+function playOn(){
+	let audio = new Audio("media/soundOn.mp3");
+	audio.play();
+}
+
+function playOff(){
+	let audio = new Audio("media/soundOff.mp3");
+	audio.play();
 }
 
 createGrid();
