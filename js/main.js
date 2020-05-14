@@ -6,6 +6,7 @@ const SECONDS = "00";
 const DEFAULT_BREAK = 5; /* Minutes */
 const MAX_BREAK = 15;
 const ONE_SECOND = 1000;
+var go;
 
 function createGrid(){
 	let divGrid = getGridContainer();
@@ -13,6 +14,7 @@ function createGrid(){
 									grid-template-rows: repeat(" + ROWS + ", 1fr);");
 	populateGrid(DEFAULT_SESSION, DEFAULT_BREAK, divGrid);
 	setOnClickEvents();
+	setButtonsOnClickEvents();
 }
 
 function getGridContainer(){ return document.getElementById("grid"); }
@@ -232,15 +234,39 @@ function setButtonsOnClickEvents(){
 }
 
 function startSession(){
-	/* Every second the function is going to be called */
+	let h1Time = document.getElementById("h1Time");
+	let str = h1Time.innerHTML;
+	let minutes = str[0] + str[1];
+	let seconds = str[3] + str[4];
+	go = true;
+
+	window.setInterval(function(){
+		if(go){
+			seconds--;
+
+			if(minutes == 0 && seconds == 0){
+				h1Time.innerText = minutes + ":" + seconds;
+			}
+
+			if(seconds < 0){
+				seconds = 59;
+				minutes--;
+			}else if (seconds < 10) {
+				seconds = "0" + seconds;
+			}
+
+			h1Time.innerText = minutes + ":" + seconds;
+		}
+	}, ONE_SECOND);
 }
 
 function stopSession(){
-	clearTimeout(time);
+	go = false;
+	let sessionMinutesObj = getSessionMinutes();
 	let h2WorkBreak = document.getElementById("h2WorkBreak");
 	h2WorkBreak.innerHTML = "WORK";
 	let h1time = document.getElementById("h1Time");
-	h1time.innerHTML = "00:00";
+	h1time.innerHTML = sessionMinutesObj.innerHTML + ":" + SECONDS;
 }
 
 createGrid();

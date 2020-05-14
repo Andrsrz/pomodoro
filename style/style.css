@@ -31,8 +31,6 @@ button {
 	color: black;
 	border-color: #606bba;
 	border-radius: 10px;
-	transition-duration: 0.5;
-	text-decoration: bold;
 }
 
 button:hover {
