@@ -28,7 +28,18 @@ body {
 button {
 	height: 50px;
 	flex: 0 0 85px;
+	color: black;
+	border-color: #606bba;
 	border-radius: 10px;
+	transition-duration: 0.5;
+	text-decoration: bold;
+}
+
+button:hover {
+	border-color: black;
+	background-color: #606bba;
+	color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 h1, h2, h3, p {
@@ -54,7 +65,7 @@ h1, h2, h3, p {
 	text-decoration: none;
 	display: block;
 	padding: 1em;
-	color: white;
+	col or: white;
 }
 
 #h3SMinutes {

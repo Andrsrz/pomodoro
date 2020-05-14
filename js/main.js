@@ -218,4 +218,12 @@ function minusBreak(){
 function getSessionMinutes(){ return document.getElementById("h3SMinutes"); }
 function getBreakMinutes(){ return document.getElementById("h3BMinutes"); }
 
+
+
 createGrid();
+
+/*
+<button onclick="myVar = setTimeout(myFunction, 3000)">Try it</button>
+
+<button onclick="clearTimeout(myVar)">Stop it</button>
+*/
